@@ -1,0 +1,30 @@
+#######################################
+# Syntax Coloring Map For PSXPad
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+lpcPads	KEYWORD2
+Pool	KEYWORD2
+SetADMode	KEYWORD2
+SetEnableMotor	KEYWORD2
+SetMotorLevel	KEYWORD2
+GetKeyState	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+PSXPads	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

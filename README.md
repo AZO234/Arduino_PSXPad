@@ -17,24 +17,24 @@ PSX(PS1/2) controler pins (not PSX's socket, pad side)
 (...|...|...)  
 
 [for Arduino]  
-1 : DAT -> Arduino MISO [need pullup by 1k owm registor to 5V]  
-2 : CMD -> Arduino MOSI  
+1 : DAT -> Arduino 12 MISO [need pullup by 1k owm registor to 5V]  
+2 : CMD -> Arduino 11 MOSI  
 3 : 9V (for motor, If you not necessary NC)  
 4 : GND  
 5 : 3.3V  
-6 : Attention -> Arduino DigitalPin  
-7 : SCK -> Arduino SCK  
+6 : Attention -> Arduino 2 DigitalPin  
+7 : SCK -> Arduino 13 SCK  
 8 : NC (Non Conect)  
 9 : ACK -> (Not use)  
 
 [for ATmega88P/168P/328P 3.3V powered]  
-1 : DAT -> MISO [need pullup 1k owm registor to 3.3V]  
-2 : CMD -> MOSI  
+1 : DAT -> 18 MISO [need pullup 1k owm registor to 3.3V]  
+2 : CMD -> 17 MOSI  
 3 : 9V (for motor, If you not necessary NC)  
 4 : GND  
 5 : 3.3V  
-6 : SEL -> DigitalPin  
-7 : SCK -> SCK  
+6 : SEL -> 2 DigitalPin  
+7 : SCK -> 19 SCK  
 8 : NC (Non Conect)  
 9 : ACK -> (Not use)  
 

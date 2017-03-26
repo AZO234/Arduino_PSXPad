@@ -1,14 +1,14 @@
-PSX(PS1/2) pad library by AZO
-=============================
+PSX(Play Station 1/2) pad library for Arduino IDE by AZO
+========================================================
 version: v1.0.0(Mar 19, 2017)  
 http://domisan.sakura.ne.jp/
 
-PSX(PS1/PS2) pads connect with SPI bus.  
-Other than Attention(SS), almost wire is common.  
+This library is PSX(Play Station 1/2) pads connect with SPI bus for Arduino IDE(Arduino/AVR).  
+Other than Attention(SS) almost wire is common, then micro-controler can connect to many pads.  
 
-All PSX pad can be gotton digital keys state.(PSXPAD_KEYSTATE_DIGITAL)  
-PS1(with analog) pad can be  gotton analog stick value.(PSXPAD_KEYSTATE_ANALOG1)  
-PS2 pad can be gotton analog key value.(PSXPAD_KEYSTATE_ANALOG2)  
+All PSX pad can be gotten digital keys state.(PSXPAD_KEYSTATE_DIGITAL)  
+PS1(with analog) pad can be  gotten analog stick value.(PSXPAD_KEYSTATE_ANALOG1)  
+PS2 pad can be gotten analog key value.(PSXPAD_KEYSTATE_ANALOG2)  
 
 Pins connection
 ---------------

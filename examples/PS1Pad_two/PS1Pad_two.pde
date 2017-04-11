@@ -9,8 +9,8 @@ void setup() {
 }
 
 void loop() {
-  PSXPads.Pool();
-  PSXPads.lpcPads[0]->GetKeyState(&tKeyState);
+  PSXPads.pool();
+  PSXPads.lpcPads[0]->getKeyState(&tKeyState);
   Serial.print("Pad1: ");
   if(tKeyState.bSel) Serial.print("Sel ");
   if(tKeyState.bL3) Serial.print("L3 ");
@@ -29,7 +29,7 @@ void loop() {
   if(tKeyState.bCrs) Serial.print("Crs ");
   if(tKeyState.bSqr) Serial.print("Sqr ");
   Serial.print("\r\n");
-  PSXPads.lpcPads[1]->GetKeyState(&tKeyState);
+  PSXPads.lpcPads[1]->getKeyState(&tKeyState);
   Serial.print("Pad2: ");
   if(tKeyState.bSel) Serial.print("Sel ");
   if(tKeyState.bL3) Serial.print("L3 ");

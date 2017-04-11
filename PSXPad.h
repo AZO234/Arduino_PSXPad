@@ -12,9 +12,9 @@ About PSX pad library
   PSX pads connect with SPI bus(LSBFIRST, MODE_3).
   Other than Attention(SS), almost wire is common.
 
-  All PSX pad can be gotton digital keys state.(PSXPAD_KEYSTATE_DIGITAL)
-  PS1(with analog) pad can be  gotton analog stick value.(PSXPAD_KEYSTATE_ANALOG1)
-  PS2 pad can be gotton analog key value.(PSXPAD_KEYSTATE_ANALOG2)
+  All PSX pad can be gotton digital keys state.(PSXPAD_KEYTYPE_DIGITAL)
+  PS1(with analog) pad can be  gotton analog stick value.(PSXPAD_KEYTYPE_ANALOG1)
+  PS2 pad can be gotton analog key value.(PSXPAD_KEYTYPE_ANALOG2)
   
 Pins connection
 ---------------
@@ -23,7 +23,7 @@ Pins connection
   (...|...|...)
 
   [for Arduino]
-  1 : DAT -> Arduino MISO [need pullup by 1k owm registor to 5V]
+  1 : DAT -> Arduino MISO [need pullup by 1k owm registor to 3.3V]
   2 : CMD -> Arduino MOSI
   3 : 9V (for motor, If you not necessary NC)
   4 : GND
@@ -61,8 +61,8 @@ void setup() {
 }
 
 void loop() {
-  PSXPads.Pool();
-  PSXPads.lpcPads[0]->GetKeyState(&tKeyState);  // get No.1 pad's key state.
+  PSXPads.pool();
+  PSXPads.lpcPads[0]->getKeyState(&tKeyState);  // get No.1 pad's key state.
   if(tKeyState.bSel) Serial.print("Sel ");
   if(tKeyState.bL3) Serial.print("L3 ");
   if(tKeyState.bR3) Serial.print("R3 ");
@@ -97,38 +97,11 @@ void setup() {
 }
 
 void loop() {
-  PSXPads.Pool();
-  PSXPads.lpcPads[0]->GetKeyState(&tKeyState[0]);  // get No.1 pad's key state.
-  PSXPads.lpcPads[1]->GetKeyState(&tKeyState[1]);  // get No.2 pad's key state.
+  PSXPads.pool();
+  PSXPads.lpcPads[0]->getKeyState(&tKeyState[0]);  // get No.1 pad's key state.
+  PSXPads.lpcPads[1]->getKeyState(&tKeyState[1]);  // get No.2 pad's key state.
 
   ...
-}
-******************************
-
-  Setting analog mode, see next code.
-
-******************************
-#include <PSXPad.h>
-
-byte lbAttPinNos[] = {2};
-
-void setup() {
-  PSXPads.begin(1, lbAttPinNos);
-  PSXPads.lpcPads[0]->SetADMode(true, false); // analog mode, no lock
-}
-******************************
-
-  To rumble motor, see next code. (need supply 9V to pad)
-
-******************************
-#include <PSXPad.h>
-
-byte lbAttPinNos[] = {2};
-
-void setup() {
-  PSXPads.begin(1, lbAttPinNos);
-  PSXPads.lpcPads[0]->SetMotorLevel(0xFF, 0xFF); // small(0 or other), large(0-255) 
-  PSXPads.lpcPads[0]->SetEnableMotor(true, true, true); // enable both motor, immediately
 }
 ******************************
 */
@@ -138,14 +111,14 @@ void setup() {
 extern class PSXPads PSXPads;
 
 typedef enum {
-  PSXPAD_KEYSTATE_DIGITAL = 0,
-  PSXPAD_KEYSTATE_ANALOG1,
-  PSXPAD_KEYSTATE_ANALOG2,
-  PSXPAD_KEYSTATE_UNKNOWN
-} PSXPad_KeyStateType_t;
+  PSXPAD_KEYTYPE_DIGITAL = 0,
+  PSXPAD_KEYTYPE_ANALOG1,
+  PSXPAD_KEYTYPE_ANALOG2,
+  PSXPAD_KEYTYPE_UNKNOWN
+} PSXPad_KeyType_t;
 
 typedef struct PSXPad_KeyState {
-  PSXPad_KeyStateType_t vType;
+  PSXPad_KeyType_t vType;
   /* PSXPAD_KEYSTATE_DIGITAL */
   boolean bSel;
   boolean bStt;
@@ -187,15 +160,15 @@ typedef struct PSXPad_KeyState {
 class PSXPad {
 public:
   PSXPad(const byte i_bAttPinNo);
-  void Pool(void);
-  void SetADMode(const boolean i_bAnalog, const boolean i_bLock);
-  void SetEnableMotor(const boolean i_bMotor1Enable, const boolean i_bMotor2Enable);
-  void SetMotorLevel(const byte i_bMotor1Level, const byte i_bMotor2Level, const boolean i_bPool);
-  void GetKeyState(PSXPad_KeyState_t* ptKeyState);
+  void pool(void);
+  void setADMode(const PSXPad_KeyType_t i_vType, const boolean i_bLock);
+  void setEnableMotor(const boolean i_bMotor1Enable, const boolean i_bMotor2Enable);
+  void setMotorLevel(const byte i_bMotor1Level, const byte i_bMotor2Level, const boolean i_bPool);
+  void getKeyState(PSXPad_KeyState_t* ptKeyState);
 
 private:
   byte bAttPinNo;
-  boolean bAnalog;
+  PSXPad_KeyType_t vType;
   boolean bLock;
   boolean bMotor1Enable;
   boolean bMotor2Enable;
@@ -206,7 +179,7 @@ private:
   byte lbEnableMotor[9];
   byte lbADMode[9];
 
-  void Command(const byte i_lbSendCmd[], const byte i_bSendCmdLen);
+  void command(const byte i_lbSendCmd[], const byte i_bSendCmdLen);
 };
 
 /* PSX pads class */
@@ -215,7 +188,7 @@ public:
   void begin(const byte i_bPadNum, const byte i_lbAttPinNos[]);
   ~PSXPads(void);
   class PSXPad** lpcPads;
-  void Pool(void);
+  void pool(void);
 
 private:
   byte bPadNum;

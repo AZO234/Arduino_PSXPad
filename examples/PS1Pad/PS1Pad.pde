@@ -9,8 +9,8 @@ void setup() {
 }
 
 void loop() {
-  PSXPads.Pool();
-  PSXPads.lpcPads[0]->GetKeyState(&tKeyState);
+  PSXPads.pool();
+  PSXPads.lpcPads[0]->getKeyState(&tKeyState);
   if(tKeyState.bSel) Serial.print("Sel ");
   if(tKeyState.bL3) Serial.print("L3 ");
   if(tKeyState.bR3) Serial.print("R3 ");

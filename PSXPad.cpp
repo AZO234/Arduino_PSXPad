@@ -75,8 +75,8 @@ void PSXPad::setEnableMotor(const boolean i_bMotor1Enable, const boolean i_bMoto
   bMotor1Enable = i_bMotor1Enable;
   bMotor2Enable = i_bMotor1Enable;
 
-  lbEnableMotor[3] = (bMotor1Enable == 0) ? 0xFF : 0x00;
-  lbEnableMotor[4] = (bMotor2Enable == 0) ? 0xFF : 0x00;
+  lbEnableMotor[3] = (bMotor1Enable == 0) ? 0x00 : 0xFF;
+  lbEnableMotor[4] = (bMotor2Enable == 0) ? 0x01 : 0xFF;
 
   command(PSX_CMD_ENTER_CFG, sizeof(PSX_CMD_ENTER_CFG));
   command(lbEnableMotor, sizeof(PSX_CMD_ENABLE_MOTOR));
@@ -87,7 +87,7 @@ void PSXPad::setMotorLevel(const byte i_bMotor1Level, const byte i_bMotor2Level,
   bMotor1Level = i_bMotor1Level;
   bMotor2Level = i_bMotor2Level;
 
-  lbPoolCmd[3] = bMotor1Level;
+  lbPoolCmd[3] = bMotor1Level ? 0xFF : 0x00;
   lbPoolCmd[4] = bMotor2Level;
 
   if(i_bPool)

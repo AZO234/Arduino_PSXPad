@@ -1,6 +1,6 @@
 PSX(Play Station 1/2) pad library for Arduino IDE by AZO
 ========================================================
-version: v1.0.1(Apr 12, 2017)  
+version: v1.0.2(Apr 12, 2017)  
 http://domisan.sakura.ne.jp/
 
 This library is PSX(Play Station 1/2) pads connect with SPI bus for Arduino IDE(Arduino/AVR).  

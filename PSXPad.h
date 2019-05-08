@@ -18,7 +18,7 @@ About PSX pad library
   
 Pins connection
 ---------------
-  PSX(PS1/2) controler pins (not PSX's socket, pad side)
+  PSX(PS1/2) controller pins (not PSX's socket, pad side)
    123 456 789
   (...|...|...)
 
@@ -30,7 +30,7 @@ Pins connection
   5 : 3.3V
   6 : Attention -> Arduino DigitalPin
   7 : SCK -> Arduino SCK
-  8 : NC (Non Conect)
+  8 : NC (Non Connect)
   9 : ACK -> (Not use)
 
   [for ATmega88P/168P/328P 3.3V powered]
@@ -41,7 +41,7 @@ Pins connection
   5 : 3.3V
   6 : SEL -> DigitalPin
   7 : SCK -> SCK
-  8 : NC (Non Conect)
+  8 : NC (Non Connect)
   9 : ACK -> (Not use)
 
 Initialise and use

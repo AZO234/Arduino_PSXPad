@@ -12,7 +12,7 @@ PS2 pad can be gotten analog key value.(PSXPAD_KEYSTATE_ANALOG2)
 
 Pins connection
 ---------------
-PSX(PS1/2) controler pins (not PSX's socket, pad side)  
+PSX(PS1/2) controller pins (not PSX's socket, pad side)  
  123 456 789  
 (...|...|...)  
 
@@ -24,7 +24,7 @@ PSX(PS1/2) controler pins (not PSX's socket, pad side)
 5 : 3.3V  
 6 : Attention -> Arduino 2 DigitalPin  
 7 : SCK -> Arduino 13 SCK  
-8 : NC (Non Conect)  
+8 : NC (Non Connect)  
 9 : ACK -> (Not use)  
 
 [for ATmega88P/168P/328P 3.3V powered]  
@@ -35,7 +35,7 @@ PSX(PS1/2) controler pins (not PSX's socket, pad side)
 5 : 3.3V  
 6 : SEL -> 2 DigitalPin  
 7 : SCK -> 19 SCK  
-8 : NC (Non Conect)  
+8 : NC (Non Connect)  
 9 : ACK -> (Not use)  
 
 Reference
